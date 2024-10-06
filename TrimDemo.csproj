@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  
+  <!-- Run `dotnet publish -c Release -r win-x64 -p:AOT=true` to make an AOT executable -->
+  <PropertyGroup Condition="'$(AOT)' == 'true'">
+    <PublishAot>true</PublishAot>
+    <OptimizationPreference>Speed</OptimizationPreference>
+  </PropertyGroup>
+  
+  <!-- Run `dotnet publish -c Release -r win-x64` to make a trimmed, self-contained, single-file executable -->
+  <PropertyGroup Condition="'$(AOT)' != 'true'">
+    <SelfContained>True</SelfContained>
+    <PublishSingleFile>True</PublishSingleFile>
+    <PublishReadyToRun>True</PublishReadyToRun>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <PublishTrimmed>true</PublishTrimmed>
+  </PropertyGroup>
+</Project>
